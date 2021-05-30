@@ -1,5 +1,6 @@
 import React , {useMemo} from 'react'
-import {MdDashboard,MdArrowDownward,MdArrowUpward,MdExitToApp} from 'react-icons/md'
+import {MdChevronLeft,MdQueuePlayNext,MdReplay,MdExitToApp} from 'react-icons/md'
+import {MdChevronRight} from 'react-icons/md'
 //import logoImg from '../../assets/logo.svg'
 import {Container, Header/*, LogImg*/, Title,  MenuContainer, MenuItemLink} from './styles';
 import emojis from '../../utils/emojis';
@@ -7,35 +8,35 @@ import emojis from '../../utils/emojis';
 const Aside: React.FC = () => {
 
     const emoji = useMemo( () => {
-        const indice = Math.floor(Math.random() * emojis.length);
-        return emojis[indice];
+        //const indice = Math.floor(Math.random() * emojis.length);
+        return emojis[3];
     },[]);
     return(
         <Container>
             <Header>
                 
                 
-                <Title>{emoji} Desafio Técnico</Title>
+                <Title>{emoji} Lançamentos SpaceX</Title>
             </Header>
             <MenuContainer>
-                <MenuItemLink href='/dashboard'>
-                    <MdDashboard/>
-                    Dashboard
+                <MenuItemLink href='/list/next'>
+                    <MdChevronRight/>
+                    Próximo Lançamento
                 </MenuItemLink>
 
-                <MenuItemLink href='/list/entry-balance'>
-                    <MdArrowUpward/>
-                    Entradas
+                <MenuItemLink href='/list/last'>
+                    <MdChevronLeft/>
+                    Último Lançamento
                 </MenuItemLink>
 
-                <MenuItemLink href='/list/exit-balance'>
-                    <MdArrowDownward/>
-                    Saídas
+                <MenuItemLink href='/list/upcoming'>
+                    <MdQueuePlayNext/>
+                    Próximos Lançamentos
                 </MenuItemLink>
 
-                <MenuItemLink href='#'>
-                    <MdExitToApp/>
-                    Sair
+                <MenuItemLink href='/list/past'>
+                    <MdReplay/>
+                    Lançamentos Passados
                 </MenuItemLink>
 
             </MenuContainer>

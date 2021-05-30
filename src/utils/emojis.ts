@@ -1,4 +1,4 @@
 
-const emojis = ['😀','😅','😝'];
+const emojis = ['😀','😅','😝', '🚀'];
 
 export default emojis

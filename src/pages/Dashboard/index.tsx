@@ -14,11 +14,17 @@ const Dashboard: React.FC = () => {
     ]
     return(
         <Container>
-            <ContentHeader title="Dashboard" lineColor="#fff">
-                <SelectInput options={options}/>
-            </ContentHeader>
+            
         </Container>
     );
 }
 
 export default Dashboard;
+
+/*
+<ContentHeader title="Dashboard" lineColor="#fff">
+                <SelectInput options={options}/>
+            </ContentHeader>
+
+*/
+

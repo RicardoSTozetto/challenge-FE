@@ -20,14 +20,36 @@ const List: React.FC<IRouteParams> = ({ match }) => {
 
     const {type} = match.params;
     const title = useMemo(() => {
-        return type === 'entry-balance' ? 
-        {
-            text : 'Entradas',
-            lineColor:'#F7931B'
-        } : 
-        {
-            text: 'Saídas',
-            lineColor: '#E44C4E'
+        
+        if(type === 'next'){
+            return ({
+                text : 'Próximo Lançamento',
+                lineColor:'#F7931B'
+            });
+        }
+        else if(type === 'last'){
+            return ({
+                text : 'Último Lançamento',
+                lineColor:'#F7931B'
+            });       
+        }
+        else if(type === 'upcoming'){
+            return ({
+                text : 'Próximos Lançamentos',
+                lineColor:'#F7931B'
+            });
+        }
+        else if(type === 'past'){
+            return ({
+                text : 'Lançamentos Passados',
+                lineColor:'#F7931B'
+            });
+        }
+        else {
+            return ({
+                text : 'Lançamentos Passados',
+                lineColor:'#F7931B'
+            });
         }
     },[type]);
 
@@ -46,23 +68,10 @@ const List: React.FC<IRouteParams> = ({ match }) => {
     return(
         <Container>
              <ContentHeader title={title.text} lineColor={title.lineColor}>
-                <SelectInput options={months}/>
-                <SelectInput options={years}/>
+               
             </ContentHeader>
 
-            <Filters>
-                <button 
-                type="button"
-                className="tag-filter tag-filter-recurrent">
-                    Recorrentes
-                </button>
-
-                <button 
-                type="button"
-                className="tag-filter tag-filter-eventual">
-                    Eventuais
-                </button>
-            </Filters>
+           
 
             <Content>
                 <HistoryFinanceCard
