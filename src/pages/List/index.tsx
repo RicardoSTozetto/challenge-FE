@@ -10,6 +10,8 @@ import {Container, Content, Filters} from './style'
 import Dados from '../../../src/dados'
 import { MenuItemLink } from '../../components/Aside/styles'
 
+import formatDate from '../../utils/formatDate'
+
 
 
 interface IRouteParams {
@@ -77,7 +79,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
                 id: item.id,
                 flight_number: item.flight_number,
                 name: item.name,
-                date_local: item.date_local,
+                date_local: formatDate(item.date_local),
                 success: item.success == true ? "#008000"   : "#800000"
 
             }

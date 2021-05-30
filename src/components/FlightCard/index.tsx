@@ -24,7 +24,7 @@ const FlightCard: React.FC<IFlightCardProps> = ({
             <Tag color={success}/>
             <div>
                 <span>Missão {flightName}</span>
-                <small>Data: {flightDate}</small>
+                <small>Dia {flightDate}</small>
             </div>
 
             <h3>Voo N˚ {flightNumber}</h3>
