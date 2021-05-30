@@ -5,7 +5,7 @@ import {Container, Tag} from './styles';
 
 interface IFlightCardProps {
     //cardColor: string;
-    flightNumber: string;
+    flightNumber: number;
     flightName: string;
     flightDate: string;
     success: string;
@@ -23,11 +23,11 @@ const FlightCard: React.FC<IFlightCardProps> = ({
         <Container>
             <Tag color={success}/>
             <div>
-                <span>{flightName}</span>
-                <small>{flightDate}</small>
+                <span>Missão {flightName}</span>
+                <small>Data: {flightDate}</small>
             </div>
 
-            <h3>{flightNumber}</h3>
+            <h3>Voo N˚ {flightNumber}</h3>
 
             
         </Container>
