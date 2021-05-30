@@ -3,8 +3,8 @@ import React, { useMemo } from 'react'
 
 
 import ContentHeader from '../../components/ContentHeader'
-import SelectInput from '../../components/SelectInput'
-import HistoryFinanceCard from '../../components/HistoryFinanceCard'
+//import SelectInput from '../../components/SelectInput'
+import FlightCard from '../../components/FlightCard'
 import {Container, Content, Filters} from './style'
 
 interface IRouteParams {
@@ -74,11 +74,11 @@ const List: React.FC<IRouteParams> = ({ match }) => {
            
 
             <Content>
-                <HistoryFinanceCard
-                    tagColor="#E44C4E"
-                    title="Conta de luz"
-                    subtitle="29/05/2021"
-                    amount="R$ 20,00"                
+                <FlightCard
+                    flightNumber = "1"
+                    flightName = "Lançamento de teste"
+                    flightDate = "25/05/2021 13:32:00"
+                    success = "#008000"                                   
                 />
                 
             </Content>
