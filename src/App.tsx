@@ -8,6 +8,7 @@ import GlobalStyles from './styles/GlobalStyles';
 
 import Routes from './routes';
 import dark from './styles/themes/dark';
+//import light from './styles/themes/light';
  
 const App: React.FC = () => {
     return(

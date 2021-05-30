@@ -1,4 +1,4 @@
-export default {
+const dark_theme = {
 
     title: 'dark',
 
@@ -19,3 +19,5 @@ export default {
     },
 
 };
+
+export default dark_theme

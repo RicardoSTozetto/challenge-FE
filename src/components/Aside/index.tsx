@@ -1,14 +1,21 @@
-import React from 'react'
+import React , {useMemo} from 'react'
 import {MdDashboard,MdArrowDownward,MdArrowUpward,MdExitToApp} from 'react-icons/md'
-import logoImg from '../../assets/logo.svg'
-import {Container, Header, LogImg, Title,  MenuContainer, MenuItemLink} from './styles';
+//import logoImg from '../../assets/logo.svg'
+import {Container, Header/*, LogImg*/, Title,  MenuContainer, MenuItemLink} from './styles';
+import emojis from '../../utils/emojis';
 
 const Aside: React.FC = () => {
+
+    const emoji = useMemo( () => {
+        const indice = Math.floor(Math.random() * emojis.length);
+        return emojis[indice];
+    },[]);
     return(
         <Container>
             <Header>
-                <LogImg src={logoImg} alt="Logo Minha Carteira"/>
-                <Title>Minha Carteira</Title>
+                
+                
+                <Title>{emoji} Desafio Técnico</Title>
             </Header>
             <MenuContainer>
                 <MenuItemLink href='/dashboard'>

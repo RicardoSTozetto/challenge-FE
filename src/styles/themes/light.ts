@@ -1,4 +1,5 @@
-export default {
+
+const light_theme = {
 
     title: 'light',
 
@@ -19,3 +20,5 @@ export default {
     },
 
 };
+
+export default light_theme

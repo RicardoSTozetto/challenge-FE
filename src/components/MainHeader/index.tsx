@@ -13,8 +13,7 @@ const MainHeader: React.FC = () => {
         return emojis[indice];
     },[]);
     return(
-        <Container>
-            <Toggle/>
+        <Container>            
             <Profile>
                 <Welcome>
                     Olá, {emoji}
