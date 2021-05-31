@@ -1,5 +1,5 @@
 import React , {useMemo} from 'react'
-import {MdChevronLeft,MdQueuePlayNext,MdReplay,MdExitToApp} from 'react-icons/md'
+import {MdChevronLeft,MdQueuePlayNext,MdReplay} from 'react-icons/md'
 import {MdChevronRight} from 'react-icons/md'
 //import logoImg from '../../assets/logo.svg'
 import {Container, Header/*, LogImg*/, Title,  MenuContainer, MenuItemLink} from './styles';

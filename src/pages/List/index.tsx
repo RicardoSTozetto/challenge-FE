@@ -5,12 +5,16 @@ import React, { useMemo, useState, useEffect} from 'react'
 import ContentHeader from '../../components/ContentHeader'
 //import SelectInput from '../../components/SelectInput'
 import FlightCard from '../../components/FlightCard'
-import {Container, Content, Filters} from './style'
+import {Container, Content} from './style'
 
-import Dados from '../../../src/dados'
-import { MenuItemLink } from '../../components/Aside/styles'
+//import Dados from '../../../src/dados'
+//import { MenuItemLink } from '../../components/Aside/styles'
 
 import formatDate from '../../utils/formatDate'
+
+import Api from '../../utils/api'
+
+
 
 
 
@@ -26,14 +30,26 @@ interface IData {
     id: string;
     flight_number: number;
     name: string;
-    date_local: string;
+    date_utc: string;
+    success: boolean;
+}
+
+interface IData1 {
+    id: string;
+    flight_number: number;
+    name: string;
+    date_utc: string;
     success: string;
 }
 
 
 const List: React.FC<IRouteParams> = ({ match }) => {
 
-    const[data, setData] = useState<IData[]>([]);
+   
+
+    const[data, setData] = useState<IData1[]>([]);
+
+    const [items, setItems] = useState<IData[]>([]);
  
     const {type} = match.params;
     const title = useMemo(() => {
@@ -41,45 +57,79 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         if(type === 'next'){
             return ({
                 text : 'Próximo Lançamento',
-                lineColor:'#F7931B'
+                lineColor:'#F7931B',
+                url: '/next'
             });
         }
         else if(type === 'last'){
             return ({
                 text : 'Último Lançamento',
-                lineColor:'#F7931B'
+                lineColor:'#F7931B',
+                url: '/latest'
             });       
         }
         else if(type === 'upcoming'){
             return ({
                 text : 'Próximos Lançamentos',
-                lineColor:'#F7931B'
+                lineColor:'#F7931B',
+                url: '/upcoming'
             });
         }
         else if(type === 'past'){
             return ({
                 text : 'Lançamentos Passados',
-                lineColor:'#F7931B'
+                lineColor:'#F7931B',
+                url: '/past'
             });
         }
         else {
             return ({
                 text : 'Lançamentos Passados',
-                lineColor:'#F7931B'
+                lineColor:'#F7931B',
+                url: '/past'
             });
         }
     },[type]);
 
     
+    // com Async Await
+    useEffect(() => {
+        async function getItems() {
+        try {
+            const { data } = await Api.get(title.url);
+            await console.log(data);
+            await setItems(data);
+
+            const response =  items.map(item => {
+
+                return {
+                    id: item.id,
+                    flight_number: item.flight_number,
+                    name: item.name,
+                    date_utc: formatDate(item.date_utc),
+                    success: item.success == true ? "#008000"   : "#800000"
+    
+                }
+            })
+    
+            
+            setData(response);
+        } catch (error) {
+            alert("Ocorreu um erro ao buscar os items");
+        }
+        }
+        getItems();
+    }, []);
+
 
     useEffect(() => {
-       const response =  Dados.map(item => {
+       const response =  items.map(item => {
 
             return {
                 id: item.id,
                 flight_number: item.flight_number,
                 name: item.name,
-                date_local: formatDate(item.date_local),
+                date_utc: formatDate(item.date_utc),
                 success: item.success == true ? "#008000"   : "#800000"
 
             }
@@ -89,7 +139,9 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         setData(response);
         
 
-    },[]);
+    },[items]);
+
+    
 
     return(
         <Container>
@@ -103,7 +155,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
                     key = {item.id}
                     flightNumber = {item.flight_number}
                     flightName = {item.name}
-                    flightDate = {item.date_local}
+                    flightDate = {item.date_utc}
                     success = {item.success}                                
                 />
                  ))
