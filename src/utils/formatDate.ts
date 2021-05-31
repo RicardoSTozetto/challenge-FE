@@ -4,7 +4,7 @@ const formatDate = (date: string): string => {
 
 
     
-    return `${dateFormatted.toLocaleDateString('pt-BR')} às ${dateFormatted.toLocaleTimeString('pt-BR')}`;
+    return `${dateFormatted.toLocaleDateString('pt-BR')} às ${dateFormatted.toLocaleTimeString('pt-BR')} no horário de Brasilia`;
     
     
 };
