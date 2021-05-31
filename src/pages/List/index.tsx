@@ -62,35 +62,35 @@ const List: React.FC<IRouteParams> = ({ match }) => {
             return ({
                 text : 'Próximo Lançamento',
                 lineColor:'#F7931B',
-                url: '/next'
+                url: '/proximo'
             });
         }
         else if(type === 'last'){
             return ({
                 text : 'Último Lançamento',
                 lineColor:'#F7931B',
-                url: '/latest'
+                url: '/ultimo'
             });       
         }
         else if(type === 'upcoming'){
             return ({
                 text : 'Próximos Lançamentos',
                 lineColor:'#F7931B',
-                url: '/upcoming'
+                url: '/proximos'
             });
         }
         else if(type === 'past'){
             return ({
                 text : 'Lançamentos Passados',
                 lineColor:'#F7931B',
-                url: '/past'
+                url: '/passados'
             });
         }
         else {
             return ({
                 text : 'Próximo Lançamento',
                 lineColor:'#F7931B',
-                url: '/next'
+                url: '/proximo'
             });
         }
     },[type]);
