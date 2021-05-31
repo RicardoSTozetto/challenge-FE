@@ -16,27 +16,27 @@ const Aside: React.FC = () => {
             <Header>
                 
                 
-                <Title>{emoji} Lançamentos SpaceX</Title>
+                <Title>Lançamentos SpaceX</Title>
             </Header>
             <MenuContainer>
                 <MenuItemLink href='/list/next'>
                     <MdChevronRight/>
-                    Próximo Lançamento
+                    Próximo {emoji}
                 </MenuItemLink>
 
                 <MenuItemLink href='/list/last'>
                     <MdChevronLeft/>
-                    Último Lançamento
+                    Último {emoji}
                 </MenuItemLink>
 
                 <MenuItemLink href='/list/upcoming'>
                     <MdQueuePlayNext/>
-                    Próximos Lançamentos
+                    Futuros {emoji}
                 </MenuItemLink>
 
                 <MenuItemLink href='/list/past'>
                     <MdReplay/>
-                    Lançamentos Passados
+                    Passados {emoji} 
                 </MenuItemLink>
 
             </MenuContainer>

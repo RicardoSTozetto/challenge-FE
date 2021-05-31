@@ -49,7 +49,7 @@ export const MenuItemLink = styled.a`
     }
 
     > svg{
-        font-size: 18px;
+        font-size: 25px;
         margin-right: 5px;
     }
 `;
