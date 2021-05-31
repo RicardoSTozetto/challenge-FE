@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useEffect} from 'react'
 
-
+import { Link } from 'react-router-dom';
 
 import ContentHeader from '../../components/ContentHeader'
 //import SelectInput from '../../components/SelectInput'
@@ -32,6 +32,9 @@ interface IData {
     name: string;
     date_utc: string;
     success: boolean;
+    links: {
+        wikipedia: string;
+    }
 }
 
 interface IData1 {
@@ -40,6 +43,7 @@ interface IData1 {
     name: string;
     date_utc: string;
     success: string;
+    wikipedia: string;
 }
 
 
@@ -97,7 +101,10 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         async function getItems() {
         try {
             const {data} = await Api.get(title.url);
-            if(Array.isArray(data))await setItems(data); 
+            if(Array.isArray(data)){
+                console.log(data);
+                await setItems(data); 
+            }
             else {
                 var Arr = [];
                 Arr.push(data);
@@ -126,7 +133,8 @@ const List: React.FC<IRouteParams> = ({ match }) => {
                 flight_number: item.flight_number,
                 name: item.name,
                 date_utc: formatDate(item.date_utc),
-                success: item.success == true ? "#008000"   : "#800000"
+                success: item.success == true ? "#008000"   : "#800000",
+                wikipedia: item.links.wikipedia != null ? item.links.wikipedia : "https://www.spacex.com"
 
             }
         })
@@ -147,13 +155,16 @@ const List: React.FC<IRouteParams> = ({ match }) => {
 
              {
                  data.map( item => (
-                <FlightCard
-                    key = {item.id}
-                    flightNumber = {item.flight_number}
-                    flightName = {item.name}
-                    flightDate = {item.date_utc}
-                    success = {item.success}                                
-                />
+                
+                    <FlightCard
+                        key = {item.id}
+                        flightNumber = {item.flight_number}
+                        flightName = {item.name}
+                        flightDate = {item.date_utc}
+                        success = {item.success}     
+                        wikipedia = {item.wikipedia}                           
+                    />
+                
                  ))
              }  
                 
