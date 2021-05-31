@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useEffect} from 'react'
 
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 import ContentHeader from '../../components/ContentHeader'
 //import SelectInput from '../../components/SelectInput'
@@ -88,9 +88,9 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         }
         else {
             return ({
-                text : 'Lançamentos Passados',
+                text : 'Próximo Lançamento',
                 lineColor:'#F7931B',
-                url: '/past'
+                url: '/next'
             });
         }
     },[type]);
@@ -102,14 +102,14 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         try {
             const {data} = await Api.get(title.url);
             if(Array.isArray(data)){
-                console.log(data);
+                //console.log(data);
                 await setItems(data); 
             }
             else {
                 var Arr = [];
                 Arr.push(data);
                 await setItems(Arr); 
-                await console.log(Arr);
+                //await console.log(Arr);
             }
                
     
@@ -133,7 +133,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
                 flight_number: item.flight_number,
                 name: item.name,
                 date_utc: formatDate(item.date_utc),
-                success: item.success == true ? "#008000"   : "#800000",
+                success: item.success === true ? "#008000"   : "#800000",
                 wikipedia: item.links.wikipedia != null ? item.links.wikipedia : "https://www.spacex.com"
 
             }

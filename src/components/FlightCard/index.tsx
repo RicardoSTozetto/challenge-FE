@@ -2,7 +2,7 @@ import React from 'react'
 
 import {Container, Tag} from './styles';
 
-import {Route} from 'react-router-dom'
+//import {Route} from 'react-router-dom'
 
 
 
