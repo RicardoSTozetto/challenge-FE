@@ -46,7 +46,7 @@ interface IData1 {
 const List: React.FC<IRouteParams> = ({ match }) => {
 
    
-
+    
     const[data, setData] = useState<IData1[]>([]);
 
     const [items, setItems] = useState<IData[]>([]);
@@ -96,24 +96,18 @@ const List: React.FC<IRouteParams> = ({ match }) => {
     useEffect(() => {
         async function getItems() {
         try {
-            const { data } = await Api.get(title.url);
-            await console.log(data);
-            await setItems(data);
-
-            const response =  items.map(item => {
-
-                return {
-                    id: item.id,
-                    flight_number: item.flight_number,
-                    name: item.name,
-                    date_utc: formatDate(item.date_utc),
-                    success: item.success == true ? "#008000"   : "#800000"
-    
-                }
-            })
+            const {data} = await Api.get(title.url);
+            if(Array.isArray(data))await setItems(data); 
+            else {
+                var Arr = [];
+                Arr.push(data);
+                await setItems(Arr); 
+                await console.log(Arr);
+            }
+               
     
             
-            setData(response);
+           
         } catch (error) {
             alert("Ocorreu um erro ao buscar os items");
         }
@@ -123,7 +117,9 @@ const List: React.FC<IRouteParams> = ({ match }) => {
 
 
     useEffect(() => {
-       const response =  items.map(item => {
+
+        
+        const response =  items.map(item => {
 
             return {
                 id: item.id,
